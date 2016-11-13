@@ -1,0 +1,9 @@
+<h1><%= t('subscriptions.new.title') %></h1>
+
+<%= render partial: 'errors', locals: { subscription: @subscription} %>
+
+<div class='box tabular'>
+<%= render partial: 'form', locals: { subscription: @subscription, action: :create } %>
+</div>
+
+<%= link_to t('button_cancel'), project_subscriptions_path(@project) %>

@@ -1,0 +1,9 @@
+
+<% unless project.blank? || project.enabled_modules.find_by_name('subscriptions').blank? %>
+<p>
+<h3><%= t('subscriptions.active.header') %></h3>
+<table>
+  <%= (render partial: 'subscriptions/time_left', as: 'subscription', collection: defined?(tracker_id)? project.subscriptions.active(tracker_id) : project.subscriptions.active , spacer_template: 'subscriptions/time_left_spacer') || t('subscriptions.active.none') %>
+</table>
+</p>
+<% end %>

@@ -1,0 +1,9 @@
+<table>
+  <tr><td><%= t('activerecord.models.subscription.name') + ': '  %> </td><td><%= @subscription.name %></td></tr>
+  <tr><td><%= t('field_activity') + ': ' %> </td><td><%= @subscription.activity %></td></tr>
+  <tr><td><%= t('activerecord.models.subscription.begindate') + ': '  %> </td><td><%= @subscription.begindate.to_date %></td></tr>
+  <tr><td><%= t('activerecord.models.subscription.enddate') + ': '  %> </td><td><%= @subscription.enddate.to_date %></td></tr>
+  <tr><td><%= t('activerecord.models.subscription.time') + ': '  %> </td><td><%= @subscription.hours_with_extra %></td></tr>
+  <tr><td><%= t('label_spent_time') + ': '  %> </td><td><%= @subscription.spent.round(2) %></td></tr>
+  <tr><td><%= t('activerecord.models.subscription.time_left') + ': ' %> </td><td> <%= @subscription.left.round(2) %></td></tr>
+</table>

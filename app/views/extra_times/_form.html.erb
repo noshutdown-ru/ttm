@@ -1,0 +1,9 @@
+<%= form_for extra_time, url: {controller: :extra_times, action: action} do |f| %>
+  <p><%= f.label :hours, t('activerecord.models.extra_time.hours') %>
+  <%= f.text_field :hours %></p>
+
+  <p><%= f.label :date_added, t('activerecord.models.extra_time.date_added') %>
+  <%= f.date_select :date_added %></p>
+
+  <%= f.submit t('button_save') %>
+<% end %>

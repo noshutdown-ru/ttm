@@ -1,0 +1,7 @@
+<%= t('activerecord.models.subscription.name') + ': '  %> <%= @subscription.name %>
+<%= t('field_activity') + ': ' %> <%= @subscription.activity %>
+<%= t('activerecord.models.subscription.begindate') + ': '  %> <%= @subscription.begindate.to_date %>
+<%= t('activerecord.models.subscription.enddate') + ': '  %> <%= @subscription.enddate.to_date %>
+<%= t('activerecord.models.subscription.time') + ': '  %> <%= @subscription.hours_with_extra %>
+<%= t('label_spent_time') + ': '  %> <%= @subscription.spent.round(2) %>
+<%= t('activerecord.models.subscription.time_left') + ': ' %> <%= @subscription.left.round(2) %>

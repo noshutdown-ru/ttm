@@ -1,0 +1,30 @@
+table.auto-width { width: auto; }
+.subscription_active { color: green; }
+.subscription_usedup { color: red; }
+
+tr[class*="subscription-status"]:not([class*="active"]), tr[class*="subscription-status"]:not([class*="active"]) a, tr[class*="subscription-status"]:not([class*="active"])  a:link, tr[class*="subscription-status"]:not([class*="active"]) a:visited{color: #a1a1a1}
+
+.color-red {color: rgba(196, 0, 0, 1)}
+
+.label.subscription_active, .label.subscription_usedup {
+    position: relative;
+    top: -5px;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: #5cb85c;
+}
+
+.label.subscription_usedup {background-color: #d9534f!important;}
+
+.label.subscription_active.warning {
+    background-color: #f3a108;
+    border: none!important;
+}

@@ -1,0 +1,29 @@
+<%= form_for subscription, url: {controller: :subscriptions, action: action} do |f| %>
+  <p><%= f.label :activity, t('field_activity') %>
+  <%= f.collection_select :activity_id, TimeEntryActivity.all, :id, :name %></p>
+
+  <p><%= f.label :tracker, t('field_tracker') %>
+  <%= f.collection_select :tracker_id, Tracker.all, :id, :name %></p>
+
+  <p><%= f.label :name, t('activerecord.models.subscription.name') %>
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label :hours, t('activerecord.models.subscription.time') %>
+  <%= f.text_field :hours %></p>
+
+  <p><%= f.label :begindate, t('activerecord.models.subscription.begindate') %>
+  <%= f.date_field :begindate %>
+  <%= calendar_for('ttm_subscription_begindate') %></p>
+
+  <p><%= f.label :enddate, t('activerecord.models.subscription.enddate') %>
+  <%= f.date_field :enddate %>
+  <%= calendar_for('ttm_subscription_enddate') %></p>
+
+  <p><%= f.label :rate, "#{t('activerecord.models.subscription.rate')}, #{Setting.plugin_ttm['ttm_currency']}" %>
+  <%= f.text_field :rate %></p>
+
+  <p><%= f.label :notify_email, t('activerecord.models.subscription.notify_email') %>
+  <%= f.text_field :notify_email %></p>
+
+  <%= f.submit t('button_save') %>
+<% end %>

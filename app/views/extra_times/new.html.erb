@@ -1,0 +1,7 @@
+<h1><%= t('extra_times.new.title') %></h1>
+
+<%= render partial: 'errors', locals: { extra_time: @extra_time} %>
+
+<%= render partial: 'form', locals: { extra_time: @extra_time, action: :create } %>
+
+<%= link_to t('button_cancel'), project_subscriptions_path(@project) %>

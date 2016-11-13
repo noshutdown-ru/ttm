@@ -1,0 +1,80 @@
+ru:
+  label_ttm: 'TTM'
+  activerecord:
+    models:
+      subscriptions: 'Подписки'
+      activity: 'Деятельность'
+      extra_times: 'Дополнительное время'
+      subscription:
+        time: 'Время'
+        time_with_extra: 'Время(с учетом дополнительного)'
+        begindate: 'Начало'
+        enddate: 'Окончание'
+        status: 'Статус'
+        rate: 'Стоимость часа'
+        spent: 'Использовано'
+        name: 'Название'
+        hours: 'Часов'
+        time_left: 'Часов осталось'
+        notify_email: 'Почта для уведомления'
+        statuses:
+          active: 'Активна'
+          pending: 'Ожидается'
+          closed: 'Закрыта'
+          usedup: 'Израсходована'
+        errors:
+          begindate: 'Дата начала должна быть раньше даты окончания'
+          overlap: 'У вас уже есть подписка на этот период'
+      extra_time:
+        time: 'Время'
+        hours: 'Часов'
+        date_added: 'Дата добавления'
+  subscriptions:
+    new:
+      title: 'Новая Подписка'
+    index:
+      label:
+        actions: 'Действия'
+        spent: 'Использовано'
+    active:
+      header: 'Активные подписки'
+      of: 'из'
+      hours: 'часов'
+      none: 'У вас нет активных подписок'
+      only_left: 'Осталось только'
+      hours_left: 'час(ов)'
+    show:
+      header: 'Информация о подписке'
+      cost: 'Стоимость'
+      comment: 'Комментарий'
+      stats_for: 'Статистика за период'
+  extra_times:
+    new:
+      title: 'Добавить дополнительное время'
+  notice:
+    subscriptions:
+      create:
+        success: 'Подписка была успешно создана'
+      delete:
+        success: 'Подписка была успешно удалена'
+        confirm: 'Действительно удалить подписку?'
+      update:
+        success: 'Подписка была успешно обновлена'
+      not_found: 'Такая подписка не существует'
+    extra_times:
+      create:
+        success: 'Время было успешно добавлено'
+      delete:
+        success: 'Дополнительное время было успешно удалено'
+  btn:
+    new_subscription: 'Новая подписка'
+    new_extra_time: 'Добавить время'
+    edit: 'Редактировать'
+    delete: 'Удалить'
+  ttm:
+    settings:
+      hours_to_warning: 'Количество оставшихся часов для предупреждения'
+      notify_period: 'Период посылки уведомления, дней'
+      rate_currency: 'Валюта'
+    notifications:
+      mail_subject: 'Ваша подписка почти закончилась' 

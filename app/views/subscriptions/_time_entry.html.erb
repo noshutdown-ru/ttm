@@ -1,0 +1,7 @@
+<tr class='<%= time_entry_counter.even? ? 'even':'odd' %>'>
+  <td><%= link_to time_entry.issue, issue_path(time_entry.issue) if time_entry.issue_id %>
+  </td>
+  <td><%= time_entry.comments %></td>
+  <td><%= time_entry.hours.round(2) %></td>
+  <td><%= (time_entry.hours * @subscription.rate).round(2) %></td>
+</tr>

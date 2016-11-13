@@ -1,0 +1,10 @@
+<% if extra_time.errors.any? %>
+  <div>
+    <h2><%=t('notice.errors')%></h2>
+    <ul>
+      <% extra_time.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

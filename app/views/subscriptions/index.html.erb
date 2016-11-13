@@ -1,0 +1,45 @@
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag "font-awesome.css", :plugin => "ttm" %>
+    <%= stylesheet_link_tag "font-awesome.min.css", :plugin => "ttm" %>
+    <%= stylesheet_link_tag 'ttm', :plugin => 'ttm' %>
+<% end %>
+
+<div class="contextual">
+  <%= link_to t('btn.new_subscription'), new_project_subscription_path(@project), class: 'icon icon-add' if User.current.allowed_to?(:edit_subscriptions, @project) %>
+</div>
+
+<h2>
+
+  <%= t('activerecord.models.subscriptions') %>
+
+  <% if !render partial: 'subscriptions/time_left', as: 'subscription', collection: @project.subscriptions.active, spacer_template: 'subscriptions/time_left_spacer' %>
+    <span class="text-muted">(<%= t('subscriptions.active.none') %>)</span>
+  <% end %>
+
+</h2>
+
+<div class='autoscroll top-20'>
+<table class='list cst-table'>
+  <thead><tr>
+    <th></th>
+    <th><%= t('activerecord.models.subscription.name') %></th>
+    <th><%= t('activerecord.models.subscription.time') %></th>
+    <th><%= t('subscriptions.index.label.spent') %></th>
+    <th><%= t('activerecord.models.subscription.begindate') %></th>
+    <th><%= t('activerecord.models.subscription.enddate') %></th>
+    <th><%= t('activerecord.models.subscription.rate') %> (<%=Setting.plugin_ttm['ttm_currency'] %>) </th>
+    <% if User.current.allowed_to?(:edit_subscriptions, @project) %>
+      <th><%= t('subscriptions.index.label.actions') %></th>
+    <% end %>
+  </tr></thead>
+  <tbody>
+    <%= render partial: 'subscription', collection: @subscriptions  %>
+  </tbody>
+</table>
+</div>
+
+<% content_for :sidebar do %>
+
+  <%= render partial: 'subscriptions/active', locals: {project: @project} %>
+  
+<% end %>

@@ -1,0 +1,22 @@
+<div class="service-block col-mob-6">
+  
+  <h3><%= subscription.activity %></h3>
+  <span class="label <%="subscription_#{subscription.status}"%> <%="warning" if subscription.left <= Setting.plugin_ttm['ttm_hours_to_warning'].to_f && subscription.left > 0 %>"><%= t("activerecord.models.subscription.statuses.#{subscription.status}") %></span>
+  
+  <p class="bottom-20">
+  
+  <% if subscription.hours_with_extra < 999 %>
+    <span class="icon icon-time">
+   
+    <% has_time = subscription.hours_with_extra-subscription.spent %>
+    <b><%=has_time.round(2)%></b>
+    <%=t('subscriptions.active.of')%> <%=subscription.hours_with_extra.round(2)%>
+    
+    <%= ' ' + t('subscriptions.active.hours_left') %>
+    
+    </span>
+  <% end %>
+  
+  </p>
+  
+</div>

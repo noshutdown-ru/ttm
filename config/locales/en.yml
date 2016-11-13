@@ -1,0 +1,80 @@
+en:
+  label_ttm: 'TTM'
+  activerecord:
+    models:
+      subscriptions: 'Subscriptions'
+      activity: 'Activity'
+      extra_times: 'Extra Time'
+      subscription:
+        time: 'Time'
+        time_with_extra: 'Time(including extra time)'
+        begindate: 'Beginning'
+        enddate: 'End'
+        status: 'Status'
+        rate: 'Rate'
+        spent: 'Spent'
+        name: 'Name'
+        hours: 'Hours'
+        time_left: 'Time Left'
+        notify_email: 'Notification Email'
+        statuses:
+          active: 'Active'
+          pending: 'Pending'
+          closed: 'Closed'
+          usedup: 'Used Up'
+        errors:
+          begindate: 'Begin date should be before End date'
+          overlap: 'You have subscriptions on these dates already'
+      extra_time:
+        time: 'Time'
+        hours: 'Hours'
+        date_added: 'Date Added'
+  subscriptions:
+    new:
+      title: 'New Subscription'
+    index:
+      label:
+        actions: 'Actions'
+        spent: 'Spent'
+    active:
+      header: 'Active Subscriptions'
+      of: 'of'
+      hours: 'hours'
+      none: 'You have no active subscriptions'
+      only_left: 'Only'
+      hours_left: 'hours left'
+    show:
+      header: 'Subscription Details'
+      cost: 'Cost'
+      comment: 'Comment'
+      stats_for: 'Stats for period'
+  extra_times:
+    new:
+      title: 'Add extra time'
+  notice:
+    subscriptions:
+      create:
+        success: 'Subscription was successfully created'
+      delete:
+        success: 'Subscription was successfully deleted'
+        confirm: 'Are you sure want to delete subscription?'
+      update:
+        success: 'Subscription was successfully updated'
+      not_found: 'That subscription does not exists'
+    extra_times:
+      create:
+        success: 'Extra Time was successfully added'
+      delete:
+        success: 'Extra Time was successfully deleted'
+  btn:
+    new_subscription: 'New Subscription'
+    new_extra_time: 'Add Extra-Time'
+    edit: 'Edit'
+    delete: 'Delete'
+  ttm:
+    settings:
+      hours_to_warning: 'Amount of hours left before warning'
+      notify_period: 'Notification email period, days'
+      rate_currency: 'Currency'
+    notifications:
+      mail_subject: 'Your subscription is almost over' 
