@@ -9,5 +9,8 @@ class AddNotNullHoursBeginEnd < ActiveRecord::Migration
       change_column_default :subscriptions, :hours, 0.0
     end
   end
+  def down
+
+  end
  end
 

@@ -6,7 +6,7 @@ Redmine::Plugin.register :ttm do
   name 'Time To Money'
   author 'noshutdown.ru'
   description 'Plugin for managing working time'
-  version '0.1.1'
+  version '0.1.2'
   url 'https://noshutdown.ru/redmine-plugins-ttm/'
   author_url 'https://noshutdown.ru/'
 

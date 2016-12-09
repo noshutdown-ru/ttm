@@ -5,5 +5,8 @@ class SubscriptionChangeToDate < ActiveRecord::Migration
       change_column :subscriptions, :enddate, :date
     end
   end
+  def down
+
+  end
  end
 

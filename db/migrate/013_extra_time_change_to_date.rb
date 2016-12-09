@@ -4,5 +4,8 @@ class ExtraTimeChangeToDate< ActiveRecord::Migration
       change_column :extra_times, :date_added, :date
     end
   end
+  def down
+
+  end
  end
 

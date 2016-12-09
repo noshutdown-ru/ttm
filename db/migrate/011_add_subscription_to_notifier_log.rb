@@ -4,5 +4,8 @@ class AddSubscriptionToNotifierLog < ActiveRecord::Migration
       add_reference :notifier_logs, :subscription, foreign_key: true
     end
   end
+  def down
+
+  end
  end
 
