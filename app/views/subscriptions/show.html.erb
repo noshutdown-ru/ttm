@@ -85,12 +85,14 @@
 <table class='list'>
   <tr>
     <th><%=t('label_issue')%></th>
+    <th><%=t('subscriptions.show.date')%></th>
     <th><%=t('subscriptions.show.comment')%></th>
     <th><%=t('activerecord.models.subscription.hours')%></th>
     <th><%="#{t('subscriptions.show.cost')}, #{Setting.plugin_ttm['ttm_currency']}"%></th>
   </tr>
   <%= render partial: 'time_entry', collection: @time_entries %>
   <tr>
+  <td></td>
   <td></td>
   <td><%=t('label_total') %></td>
   <td><%= @total_time.round(2) %></td>

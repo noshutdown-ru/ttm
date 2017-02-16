@@ -1,0 +1,80 @@
+en:
+  label_ttm: 'TTM'
+  activerecord:
+    models:
+      subscriptions: '订阅'
+      activity: '活动'
+      extra_times: '加时'
+      subscription:
+        time: '时间'
+        time_with_extra: '时间（包括加时）'
+        begindate: '开始'
+        enddate: '结束'
+        status: '状态'
+        rate: '定额'
+        spent: '已用'
+        name: '名称'
+        hours: '小时'
+        time_left: '剩下时间'
+        notify_email: '通知邮件'
+        statuses:
+          active: '激活'
+          pending: '等待'
+          closed: '过期'
+          usedup: '过量'
+        errors:
+          begindate: '开始期间应该前于结束期间'
+          overlap: '该期间已有订阅'
+      extra_time:
+        time: '时间'
+        hours: '小时'
+        date_added: '添加日期'
+  subscriptions:
+    new:
+      title: '新建订阅'
+    index:
+      label:
+        actions: '操作'
+        spent: '已用'
+    active:
+      header: '激活订阅'
+      of: '于'
+      hours: '小时'
+      none: '无激活订阅'
+      only_left: '只剩下'
+      hours_left: '小时'
+    show:
+      header: '订阅详细'
+      cost: '费用'
+      comment: '备注'
+      stats_for: '期间统计'
+  extra_times:
+    new:
+      title: '添加时间'
+  notice:
+    subscriptions:
+      create:
+        success: '订阅新建成功'
+      delete:
+        success: '订阅删除成功'
+        confirm: '确定删除该订阅吗？'
+      update:
+        success: '订阅修改成功'
+      not_found: '该订阅不存在'
+    extra_times:
+      create:
+        success: '添加时间成功'
+      delete:
+        success: '那是删除成功'
+  btn:
+    new_subscription: '新建订阅'
+    new_extra_time: '添加时间'
+    edit: '修改'
+    delete: '删除'
+  ttm:
+    settings:
+      hours_to_warning: '时间不足通知,小时'
+      notify_period: '通知频率，天'
+      rate_currency: '货币'
+    notifications:
+      mail_subject: '您的订阅即将结束' 

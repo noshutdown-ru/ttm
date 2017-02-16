@@ -16,6 +16,18 @@
     <span class="text-muted">(<%= t('subscriptions.active.none') %>)</span>
   <% end %>
 
+  <%= form_tag({ controller: :subscriptions, action: :index }, method: 'get') do %>
+      <%= text_field_tag(:query, @query, class: 'autocomplete') %>
+
+      <font size="2">
+        <%= radio_button_tag(:search_fild, "name", true) %>
+        <%= label_tag(:name, t('subscriptions.attr.name')) %>
+      </font>
+
+      <%= submit_tag(t('button_update')) %>
+  <% end %>
+  <%= button_to(t('button_clear'), {query: ''}, method: 'get') %>
+
 </h2>
 
 <div class='autoscroll top-20'>
@@ -37,6 +49,10 @@
   </tbody>
 </table>
 </div>
+
+<% other_formats_links do |f| %>
+    <%= f.link_to t('export.title.pdf'), :url => params if User.current.allowed_to?(:export_subscriptions, @project)%>
+<% end %>
 
 <% content_for :sidebar do %>
 

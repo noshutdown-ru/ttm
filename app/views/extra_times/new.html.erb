@@ -1,7 +1,12 @@
 <h1><%= t('extra_times.new.title') %></h1>
 
 <%= render partial: 'errors', locals: { extra_time: @extra_time} %>
+<div class="issue">
+  <div class="splitcontent">
+    <div class="splitcontentleft">
+    <%= render partial: 'form', locals: { extra_time: @extra_time, action: :create } %>
 
-<%= render partial: 'form', locals: { extra_time: @extra_time, action: :create } %>
-
-<%= link_to t('button_cancel'), project_subscriptions_path(@project) %>
+    <%= link_to t('button_cancel'), project_subscriptions_path(@project) %>
+    </div>
+  </div>
+</div>

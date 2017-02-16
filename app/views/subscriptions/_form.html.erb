@@ -23,7 +23,9 @@
   <%= f.text_field :rate %></p>
 
   <p><%= f.label :notify_email, t('activerecord.models.subscription.notify_email') %>
-  <%= f.text_field :notify_email %></p>
+  <%= f.text_field :notify_email %>
+    <em class="info"><%= l(:label_example) %>: bill@example.com,info@example.com </em></p>
+  </p>
 
   <%= f.submit t('button_save') %>
 <% end %>

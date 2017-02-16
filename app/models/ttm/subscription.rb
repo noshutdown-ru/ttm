@@ -13,6 +13,10 @@ module TTM
                     :notify_email
     validates_numericality_of :rate, allow_nil: false
     validates_numericality_of :hours, allow_nil: false
+    validates :project, presence: true
+    validates :activity, presence: true
+    validates :tracker, presence: true
+    validates_associated :activity
     validate :only_one_subscription_on_period, :begindate_before_enddate
 
     #after_initialize do |s|

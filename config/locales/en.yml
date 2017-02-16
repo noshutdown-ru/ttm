@@ -48,6 +48,7 @@ en:
       cost: 'Cost'
       comment: 'Comment'
       stats_for: 'Stats for period'
+      date: 'Date'
   extra_times:
     new:
       title: 'Add extra time'

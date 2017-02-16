@@ -6,13 +6,14 @@ Redmine::Plugin.register :ttm do
   name 'Time To Money'
   author 'noshutdown.ru'
   description 'Plugin for managing working time'
-  version '0.1.3'
+  version '0.2.0'
   url 'https://noshutdown.ru/redmine-plugins-ttm/'
   author_url 'https://noshutdown.ru/'
 
   project_module :subscriptions do
-    permission :view_subscriptions, subscriptions: [ :index, :show ]
-    permission :edit_subscriptions, subscriptions: [ :create, :new, :edit, :update, :destroy ], extra_times: [ :create, :new ]
+    permission :export_subscriptions, subscriptions: [ :subscriptions_to_pdf ]
+    permission :view_subscriptions, subscriptions: [ :index, :show, :time_entries ]
+    permission :edit_subscriptions, subscriptions: [ :create, :new, :edit, :update, :destroy ], extra_times: [ :create, :new, :index ]
   end
 
   menu :project_menu, :subscriptions, { controller: 'subscriptions', action: 'index' }, caption: Proc.new {I18n.t('activerecord.models.subscriptions')}, after: :activity, param: :project_id

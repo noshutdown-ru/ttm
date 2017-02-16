@@ -3,11 +3,11 @@
 Is a plugin for project management Redmine.
 Allows you to create a subscription for the various activities and keep records of customer service.
 
-# About
+## About
 
 https://noshutdown.ru/en/redmine-plugins-ttm/#about
 
-# Instalaltion
+## Instalaltion
 
 ```
 # cd redmine/plugins 
@@ -17,14 +17,16 @@ https://noshutdown.ru/en/redmine-plugins-ttm/#about
 # rake redmine:plugins:migrate RAILS_ENV=production
 ```
 
-* For sending reminders (e-mail) about the low level of subscription balance: ``` RAILS_ENV=production rake redmine:plugins:ttm:notify``` in redmine root.
+* **For sending reminders (e-mail) about the low level of subscription balance**: ``` RAILS_ENV=production rake redmine:plugins:ttm:notify``` **in redmine root.**
 
 Read more: https://noshutdown.ru/en/redmine-plugins-ttm/#install
 
-# Screenshots
+## [REST API](RESTAPI.md)
+
+## Screenshots
 
 https://noshutdown.ru/en/redmine-plugins-ttm/#screens
 
-# Releases
+## Releases info
 
 https://noshutdown.ru/en/redmine-plugins-ttm/#releases

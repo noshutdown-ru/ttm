@@ -1,9 +1,22 @@
 <%= form_for extra_time, url: {controller: :extra_times, action: action} do |f| %>
-  <p><%= f.label :hours, t('activerecord.models.extra_time.hours') %>
-  <%= f.text_field :hours %></p>
+    <div class="attribute">
+      <div class="label">
+        <%= f.label :hours, t('activerecord.models.extra_time.hours') %>
+      </div>
+      <div class="value">
+        <%= f.text_field :hours %>
+      </div>
+    </div>
+    <div class="attribute">
+      <div class="label">
+        <%= f.label :date_added, t('activerecord.models.extra_time.date_added') %>
+      </div>
+      <div class="value">
+        <%= f.date_field :date_added %>
+        <%= calendar_for('ttm_extra_time_date_added') %>
+      </div>
+    </div>
 
-  <p><%= f.label :date_added, t('activerecord.models.extra_time.date_added') %>
-  <%= f.date_select :date_added %></p>
-
-  <%= f.submit t('button_save') %>
+    <%= f.submit t('button_save') %>
 <% end %>
+
