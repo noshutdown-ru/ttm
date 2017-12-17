@@ -1,3 +1,9 @@
+#admin-menu a.ttm {
+    background-image: url("/images/time.png");
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
 table.auto-width { width: auto; }
 .subscription_active { color: green; }
 .subscription_usedup { color: red; }

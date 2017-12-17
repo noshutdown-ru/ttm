@@ -1,14 +1,20 @@
 en:
   label_ttm: 'TTM'
+  settings_tab_general: 'General'
+  settings_tab_subscriptions: 'Subscriptions'
+
   activerecord:
     models:
       subscriptions: 'Subscriptions'
+      services: 'Services'
       activity: 'Activity'
       extra_times: 'Extra Time'
       subscription:
         time: 'Time'
         time_with_extra: 'Time(including extra time)'
+        serivce: 'Serice'
         begindate: 'Beginning'
+        manager: 'Manager'
         enddate: 'End'
         status: 'Status'
         rate: 'Rate'
@@ -31,13 +37,15 @@ en:
         date_added: 'Date Added'
   subscriptions:
     new:
-      title: 'New Subscription'
+      title: 'Add Service'
     index:
       label:
         actions: 'Actions'
         spent: 'Spent'
+    edit:
+      title: 'Edit Service'
     active:
-      header: 'Active Subscriptions'
+      header: 'Active Services'
       of: 'of'
       hours: 'hours'
       none: 'You have no active subscriptions'
@@ -47,12 +55,18 @@ en:
       header: 'Subscription Details'
       cost: 'Cost'
       comment: 'Comment'
+      summary: 'Summary'
+      spent:   'Time Spent'
+      extra_times: 'Extra Times'
       stats_for: 'Stats for period'
       date: 'Date'
   extra_times:
     new:
       title: 'Add extra time'
   notice:
+    services:
+      create:
+        success: 'Services was successfully created'
     subscriptions:
       create:
         success: 'Subscription was successfully created'
@@ -69,13 +83,21 @@ en:
         success: 'Extra Time was successfully deleted'
   btn:
     new_subscription: 'New Subscription'
+    new_service: 'New Service'
+    add_service: 'Add Service'
     new_extra_time: 'Add Extra-Time'
     edit: 'Edit'
     delete: 'Delete'
   ttm:
     settings:
+      title: "TTM settings"
       hours_to_warning: 'Amount of hours left before warning'
       notify_period: 'Notification email period, days'
       rate_currency: 'Currency'
+      tab:
+        general:
+          title: 'General'
+        subscriptions:
+          title:  'Subscriptions'
     notifications:
       mail_subject: 'Your subscription is almost over' 

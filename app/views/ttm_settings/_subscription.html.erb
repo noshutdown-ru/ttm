@@ -1,0 +1,17 @@
+<% @project = Project.find(subscription.id) %>
+
+<tr class='<%= subscription_counter.even? ? 'even':'odd'%> <%="subscription-status-#{subscription.status}"%>'>
+
+  <td class=<%="subscription_#{subscription.status}"%>> <i class="fa fa-circle" aria-hidden="true"></i> </td>
+  <td> <%= link_to subscription.name, project_subscription_path(@project, subscription) %> </td>
+  <td> <span class="icon icon-time"><%= link_to subscription.hours_with_extra, project_subscription_path(@project, subscription) %></span> </td>
+  <td> <span class="icon icon-time"><%= link_to subscription.spent, project_subscription_path(@project, subscription) %></span> </td>
+  <td> <%= link_to subscription.begindate.to_date, project_subscription_path(@project, subscription) %> </td>
+  <td> <%= link_to subscription.enddate.to_date, project_subscription_path(@project, subscription) %> </td>
+  <td> <%= subscription.rate.to_s %> </td>
+  <td>
+    <%= link_to '<i class="fa fa-plus-square mr-5" aria-hidden="true"></i>'.html_safe, new_project_subscription_extra_time_path(@project,subscription) %>  &nbsp;
+    <%= link_to '<i class="fa fa-pencil-square mr-5" aria-hidden="true"></i>'.html_safe, edit_project_subscription_path(@project,subscription) %>  &nbsp;
+    <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, project_subscription_path(@project,subscription), data: {confirm: t('notice.subscriptions.delete.confirm')}, method: :delete %>
+  </td>
+</tr>

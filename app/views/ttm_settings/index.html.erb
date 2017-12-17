@@ -1,0 +1,15 @@
+<h2><%= t('ttm.settings.title') %></h2>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "font-awesome.css", :plugin => "ttm" %>
+  <%= stylesheet_link_tag "font-awesome.min.css", :plugin => "ttm" %>
+  <%= stylesheet_link_tag 'ttm', :plugin => 'ttm' %>
+<% end %>
+
+<% ttm_tabs = [
+    {:name => 'general', :partial => 'general', :label => :settings_tab_general},
+    {:name => 'subscriptions', :partial => 'subscriptions', :label => :settings_tab_subscriptions},
+]
+%>
+
+<%= render_tabs ttm_tabs %>

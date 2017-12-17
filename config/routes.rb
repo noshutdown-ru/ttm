@@ -7,3 +7,10 @@ resources :projects do
     resources :extra_times
   end
 end
+
+resources :ttm_settings do
+  collection do
+    get :autocomplete_for_user
+    post :save, to: 'ttm_settings#save'
+  end
+end

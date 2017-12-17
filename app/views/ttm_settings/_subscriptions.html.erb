@@ -1,0 +1,18 @@
+<div class='autoscroll top-20'>
+  <table class='list cst-table'>
+    <thead><tr>
+      <th></th>
+      <th><%= t('activerecord.models.subscription.service') %></th>
+      <th><%= t('activerecord.models.subscription.time') %></th>
+      <th><%= t('subscriptions.index.label.spent') %></th>
+      <th><%= t('activerecord.models.subscription.begindate') %></th>
+      <th><%= t('activerecord.models.subscription.enddate') %></th>
+      <th><%= t('activerecord.models.subscription.rate') %> (<%=Setting.plugin_ttm['ttm_currency'] %>) </th>
+      <th><%= t('subscriptions.index.label.actions') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render partial: 'subscription', as: 'subscription', collection: @subscriptions  %>
+    </tbody>
+  </table>
+</div>

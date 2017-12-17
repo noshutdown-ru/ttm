@@ -1,0 +1,29 @@
+<div id="settings">
+  <%= form_tag({:action => :save}) do %>
+    <div class="box tabular settings">
+      <table>
+        <tbody>
+        <tr>
+          <th><%= t('ttm.settings.hours_to_warning') %></th>
+          <td>
+            <input type="text" id="settings_ttm_hours_to_warning" value="<%= Setting.plugin_ttm['ttm_hours_to_warning'] %>" name="settings[ttm_hours_to_warning]" >
+          </td>
+        </tr>
+        <tr>
+          <th><%= t('ttm.settings.rate_currency') %></th>
+          <td>
+            <input type="text" id="settings_ttm_currency" value="<%= Setting.plugin_ttm['ttm_currency'] %>" name="settings[ttm_currency]" >
+          </td>
+        </tr>
+        <tr>
+          <th><%= t('ttm.settings.notify_period') %></th>
+          <td>
+            <input type="text" id="settings_ttm_notify_period" value="<%= Setting.plugin_ttm['ttm_notify_period'] %>" name="settings[ttm_notify_period]" >
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <%= submit_tag l(:button_apply) %>
+  <% end %>
+</div>
