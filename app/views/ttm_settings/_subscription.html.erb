@@ -1,4 +1,4 @@
-<% @project = Project.find(subscription.id) %>
+<% @project = Project.find(subscription.project_id) %>
 
 <tr class='<%= subscription_counter.even? ? 'even':'odd'%> <%="subscription-status-#{subscription.status}"%>'>
 
