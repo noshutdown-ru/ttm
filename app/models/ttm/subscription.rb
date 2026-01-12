@@ -1,16 +1,12 @@
 module TTM
 
   class TTM::Subscription < ActiveRecord::Base
-    has_many   :extra_times
+    has_many :extra_times, class_name: 'TTM::ExtraTime'
     belongs_to :project
     belongs_to :user
     belongs_to :activity, :class_name => 'TimeEntryActivity'
     belongs_to :tracker
-    unloadable
-    attr_accessible :project_id, :user_id, :hours,
-                    :activity_id, :begindate, :enddate,
-                    :status, :rate, :tracker_id, :name,
-                    :notify_email
+
     validates_numericality_of :rate, allow_nil: false
     validates_numericality_of :hours, allow_nil: false
     validates :project, presence: true

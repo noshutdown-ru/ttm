@@ -1,4 +1,4 @@
-class SubscriptionAddBeginEnd < ActiveRecord::Migration
+class SubscriptionAddBeginEnd < ActiveRecord::Migration[6.1]
     def change
       add_column :subscriptions, :begindate, :datetime
       add_index :subscriptions, :begindate

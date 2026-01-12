@@ -1,8 +1,7 @@
 module TTM
 
   class TTM::ExtraTime < ActiveRecord::Base
-    belongs_to :subscription
-    attr_accessible :hours, :date_added
+    belongs_to :subscription, class_name: 'TTM::Subscription'
     validates :subscription, presence: true
     validates_numericality_of :hours, allow_nil: false
     validates :hours, presence: true

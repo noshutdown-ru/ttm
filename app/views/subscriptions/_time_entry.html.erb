@@ -1,8 +1,7 @@
 <tr class='<%= time_entry_counter.even? ? 'even':'odd' %>'>
-  <td><%= link_to time_entry.issue, issue_path(time_entry.issue) if time_entry.issue_id %>
-  </td>
-  <td><%= time_entry.created_on %></td>
+  <td><%= link_to time_entry.issue, issue_path(time_entry.issue) if time_entry.issue_id %></td>
+  <td><%= format_date(time_entry.spent_on) %></td>
   <td><%= time_entry.comments %></td>
-  <td><%= time_entry.hours.round(2) %></td>
-  <td><%= (time_entry.hours * @subscription.rate).round(2) %></td>
+  <td style="text-align:right"><%= time_entry.hours.round(2) %></td>
+  <td style="text-align:right"><%= number_to_currency((time_entry.hours * @subscription.rate).round(2), unit: Setting.plugin_ttm['ttm_currency'], separator: '.', delimiter: ',') %></td>
 </tr>

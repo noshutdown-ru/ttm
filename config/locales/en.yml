@@ -49,6 +49,7 @@ en:
       comment: 'Comment'
       stats_for: 'Stats for period'
       date: 'Date'
+      delete_confirm: 'Are you sure you want to delete this subscription?'
   extra_times:
     new:
       title: 'Add extra time'
@@ -78,4 +79,11 @@ en:
       notify_period: 'Notification email period, days'
       rate_currency: 'Currency'
     notifications:
-      mail_subject: 'Your subscription is almost over' 
+      mail_subject: 'Your subscription is almost over'
+  admin:
+    ttm:
+      subscriptions:
+        title: 'Subscriptions'
+        number: 'Number'
+        subscriptions: 'Subscriptions'
+        search_number: 'Search by Number' 

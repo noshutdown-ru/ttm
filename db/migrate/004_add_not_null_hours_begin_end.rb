@@ -1,4 +1,4 @@
-class AddNotNullHoursBeginEnd < ActiveRecord::Migration
+class AddNotNullHoursBeginEnd < ActiveRecord::Migration[6.1]
   def up
     change_column_null :subscriptions, :begindate, false
     change_column_default :subscriptions, :begindate, Time.now.beginning_of_day

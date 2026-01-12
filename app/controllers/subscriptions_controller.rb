@@ -1,13 +1,38 @@
 class SubscriptionsController < ApplicationController
-  unloadable
-
-  before_action :find_project_by_project_id
-  before_action :authorize
+  before_action :find_project_by_project_id, except: [:all]
+  before_action :authorize, except: [:all]
   before_action :find_subscription, only: [:show, :update, :edit, :destroy, :time_entries]
+  before_action :check_all_permission, only: [:all]
   #before_action :find_subscriptions
-  
+
   accept_api_auth :index, :show, :create, :update, :destroy, :time_entries
-  
+
+  helper :sort
+  include SortHelper
+
+  def all
+    sort_init 'id', 'asc'
+    sort_update 'id' => "#{TTM::Subscription.table_name}.id",
+                'name' => "#{TTM::Subscription.table_name}.name",
+                'project' => "#{Project.table_name}.name"
+
+    @subscriptions = TTM::Subscription.includes(:project, :activity, :tracker).order(sort_clause)
+
+    @limit = per_page_option
+    @subscription_count = @subscriptions.count
+    @subscription_pages = Paginator.new @subscription_count, @limit, params[:page]
+    @offset ||= @subscription_pages.offset
+
+    if @subscription_count > 0
+      @subscriptions = @subscriptions.offset(@offset).limit(@limit)
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @subscriptions }
+    end
+  end
+
   def index
 
     @query = params[:query]
@@ -77,7 +102,7 @@ class SubscriptionsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @subscription.update_attributes(params[:ttm_subscription])
+      if @subscription.update(subscription_params)
          format.html { redirect_to project_subscriptions_path(@project), notice: t('notice.subscriptions.update.success') }
          format.json { render text: '', status: :accepted, layout: nil }
        else
@@ -102,8 +127,13 @@ class SubscriptionsController < ApplicationController
   end
 
   private
-  #def find_subscriptions
-  #end
+
+  def check_all_permission
+    unless User.current.allowed_to?({ :controller => 'subscriptions', :action => 'all' }, nil, :global => true)
+      render_403
+    end
+  end
+
   def subscription_params
     params.require(:ttm_subscription).permit(:hours, :activity_id, :tracker_id, :begindate, :enddate, :rate, :name, :notify_email)
   end

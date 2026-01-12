@@ -34,6 +34,7 @@
 <table class='list cst-table'>
   <thead><tr>
     <th></th>
+    <th>ID</th>
     <th><%= t('activerecord.models.subscription.name') %></th>
     <th><%= t('activerecord.models.subscription.time') %></th>
     <th><%= t('subscriptions.index.label.spent') %></th>
@@ -51,7 +52,7 @@
 </div>
 
 <% other_formats_links do |f| %>
-    <%= f.link_to t('export.title.pdf'), :url => params if User.current.allowed_to?(:export_subscriptions, @project)%>
+    <%= f.link_to t('export.title.pdf'), :url => params.permit!.to_h if User.current.allowed_to?(:export_subscriptions, @project)%>
 <% end %>
 
 <% content_for :sidebar do %>

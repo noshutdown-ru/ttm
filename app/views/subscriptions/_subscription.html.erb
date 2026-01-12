@@ -1,6 +1,7 @@
 <tr class='<%= subscription_counter.even? ? 'even':'odd'%> <%="subscription-status-#{subscription.status}"%>'>
- 
+
   <td class=<%="subscription_#{subscription.status}"%>> <i class="fa fa-circle" aria-hidden="true"></i> </td>
+  <td><small style="color: #999;"><strong><%= subscription.id %></strong></small></td>
   <td> <%= link_to subscription.name, project_subscription_path(@project, subscription) %> </td>
   <td> <span class="icon icon-time"><%= link_to subscription.hours_with_extra, project_subscription_path(@project, subscription) %></span> </td>
   <td> <span class="icon icon-time"><%= link_to subscription.spent, project_subscription_path(@project, subscription) %></span> </td>

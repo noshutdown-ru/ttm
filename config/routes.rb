@@ -1,6 +1,9 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 
+# Global subscriptions view
+get 'subscriptions/all', to: 'subscriptions#all', as: 'subscriptions_all'
+
 resources :projects do
   get 'subscriptions/:id/time_entries', to: 'subscriptions#time_entries'
   resources :subscriptions do

@@ -1,4 +1,4 @@
-class AddExtraTimes < ActiveRecord::Migration
+class AddExtraTimes < ActiveRecord::Migration[6.1]
   def change
     create_table :extra_times do |t|
       t.belongs_to :subscription, index: true
