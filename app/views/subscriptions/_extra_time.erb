@@ -1,4 +1,9 @@
 <tr class='<%= extra_time_counter.even? ? 'even':'odd'%>'>
-<td><%= extra_time.hours.round(2) %></td>
-<td><%= extra_time.date_added.to_date %></td>
+  <td style="text-align:right"><%= extra_time.hours.round(2) %></td>
+  <td><%= extra_time.date_added.to_date %></td>
+  <% if User.current.allowed_to?(:edit_subscriptions, @project) %>
+    <td style="text-align:center">
+      <%= link_to '', project_subscription_extra_time_path(@project, @subscription, extra_time), method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon icon-del' %>
+    </td>
+  <% end %>
 </tr>

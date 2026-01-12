@@ -1,0 +1,74 @@
+<div class="contextual">
+  <%= link_to t('button_clear'), admin_subscriptions_path, class: 'icon icon-reload' if @project_id.present? || @search.present? %>
+</div>
+
+<h2><%= t('admin.ttm.subscriptions.title') %></h2>
+
+<div class="box">
+  <%= form_tag(admin_subscriptions_path, method: 'get', class: 'filter-form') do %>
+    <div class="field-row" style="display: flex; gap: 15px; align-items: flex-end;">
+      <div class="field" style="flex: 1;">
+        <label><%= t('field_project') %></label>
+        <%= select_tag(:project_id, options_for_select(@projects.map { |p| [p.name, p.id] }, @project_id), { include_blank: t('label_all') }) %>
+      </div>
+      <div class="field" style="flex: 1;">
+        <label><%= t('admin.ttm.subscriptions.search_number') %></label>
+        <%= text_field_tag(:search, @search, placeholder: 'SUB-000001') %>
+      </div>
+      <div class="field">
+        <%= submit_tag(t('button_apply'), class: 'btn btn-primary') %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if @grouped_subscriptions.any? %>
+  <% @grouped_subscriptions.each do |project, subscriptions| %>
+    <div class="box" style="margin-top: 20px;">
+      <h3>
+        <%= link_to project.name, project_path(project), class: 'project-link' %>
+        <span class="count" style="font-size: 12px; color: #999;">(<%= subscriptions.length %> <%= t('admin.ttm.subscriptions.subscriptions') %>)</span>
+      </h3>
+
+      <table class="list">
+        <thead>
+          <tr>
+            <th><%= t('admin.ttm.subscriptions.number') %></th>
+            <th><%= t('activerecord.models.subscription.name') %></th>
+            <th><%= t('field_activity') %></th>
+            <th><%= t('activerecord.models.subscription.begindate') %></th>
+            <th><%= t('activerecord.models.subscription.enddate') %></th>
+            <th style="text-align:right"><%= t('activerecord.models.subscription.time') %></th>
+            <th style="text-align:right"><%= t('subscriptions.show.cost') %></th>
+            <th><%= t('activerecord.models.subscription.status') %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% subscriptions.each do |sub| %>
+            <tr class="<%= cycle('even', 'odd') %>">
+              <td><strong><%= sub.subscription_number %></strong></td>
+              <td><%= sub.name.present? ? sub.name : "-" %></td>
+              <td><%= sub.activity %></td>
+              <td><%= sub.begindate.to_date %></td>
+              <td><%= sub.enddate.to_date %></td>
+              <td style="text-align:right"><%= sub.hours %></td>
+              <td style="text-align:right"><%= number_to_currency(sub.rate * sub.hours, unit: Setting.plugin_ttm['ttm_currency'], separator: '.', delimiter: ',') %></td>
+              <td>
+                <span class="badge <%= sub.status %>">
+                  <%= t("activerecord.models.subscription.statuses.#{sub.status}") %>
+                </span>
+              </td>
+              <td style="text-align:center">
+                <%= link_to '', project_subscription_path(project, sub), class: 'icon icon-show', title: t('button_view') %>
+                <%= link_to '', edit_project_subscription_path(project, sub), class: 'icon icon-edit', title: t('button_edit') %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+<% else %>
+  <div class="nodata"><%= t('label_no_data') %></div>
+<% end %>

@@ -1,4 +1,4 @@
-en:
+zh:
   label_ttm: 'TTM'
   activerecord:
     models:
@@ -48,6 +48,7 @@ en:
       cost: '费用'
       comment: '备注'
       stats_for: '期间统计'
+      delete_confirm: '确定删除此订阅吗？'
   extra_times:
     new:
       title: '添加时间'
@@ -77,4 +78,11 @@ en:
       notify_period: '通知频率，天'
       rate_currency: '货币'
     notifications:
-      mail_subject: '您的订阅即将结束' 
+      mail_subject: '您的订阅即将结束'
+  admin:
+    ttm:
+      subscriptions:
+        title: '订阅'
+        number: '编号'
+        subscriptions: '订阅'
+        search_number: '按编号搜索' 

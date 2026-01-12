@@ -1,0 +1,133 @@
+<% html_title(t('activerecord.models.subscriptions')) %>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "font-awesome.css", :plugin => "ttm" %>
+  <%= stylesheet_link_tag "font-awesome.min.css", :plugin => "ttm" %>
+  <%= stylesheet_link_tag 'ttm', :plugin => 'ttm' %>
+<% end %>
+
+<div class="contextual">
+</div>
+
+<h2><%= t('activerecord.models.subscriptions') %></h2>
+
+<%= form_tag({}) do %>
+<table class='list' id='subscriptions_table'>
+  <thead>
+  <tr>
+    <th style="padding: 4px;">
+      <%= text_field_tag(:filter_project, '',
+        { id: 'filter-project', class: 'filter-text', placeholder: t('field_project'), style: 'width: 100%; box-sizing: border-box; padding: 4px; border: 1px solid #ddd;' }) %>
+    </th>
+    <th style="padding: 4px;">
+      <%= text_field_tag(:filter_id, '',
+        { id: 'filter-id', class: 'filter-text', placeholder: 'ID', style: 'width: 100%; box-sizing: border-box; padding: 4px; border: 1px solid #ddd;' }) %>
+    </th>
+    <th style="padding: 4px;">
+      <%= text_field_tag(:filter_name, '',
+        { id: 'filter-name', class: 'filter-text', placeholder: t('activerecord.models.subscription.name'), style: 'width: 100%; box-sizing: border-box; padding: 4px; border: 1px solid #ddd;' }) %>
+    </th>
+    <th style="padding: 4px;">
+      <%= text_field_tag(:filter_activity, '',
+        { id: 'filter-activity', class: 'filter-text', placeholder: t('field_activity'), style: 'width: 100%; box-sizing: border-box; padding: 4px; border: 1px solid #ddd;' }) %>
+    </th>
+    <th style="padding: 4px;">
+      <%= text_field_tag(:filter_tracker, '',
+        { id: 'filter-tracker', class: 'filter-text', placeholder: t('field_tracker'), style: 'width: 100%; box-sizing: border-box; padding: 4px; border: 1px solid #ddd;' }) %>
+    </th>
+    <th style="padding: 4px;">
+      <%= text_field_tag(:filter_status, '',
+        { id: 'filter-status', class: 'filter-text', placeholder: t('activerecord.models.subscription.status'), style: 'width: 100%; box-sizing: border-box; padding: 4px; border: 1px solid #ddd;' }) %>
+    </th>
+    <th><%= t('activerecord.models.subscription.hours') %></th>
+    <th><%= t('subscriptions.index.label.spent') %></th>
+    <th><%= t('activerecord.models.subscription.rate') %> (<%=Setting.plugin_ttm['ttm_currency'] %>)</th>
+    <th><%= t('subscriptions.index.label.actions') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @subscriptions.each do |subscription| %>
+    <tr class='<%= cycle('odd', 'even') %> <%= "subscription-status-#{subscription.status}" %>'>
+      <td><%= subscription.project.name %></td>
+      <td><strong><%= link_to subscription.id, project_subscription_path(subscription.project, subscription) %></strong></td>
+      <td><%= link_to subscription.name, project_subscription_path(subscription.project, subscription) %></td>
+      <td><%= subscription.activity %></td>
+      <td><%= subscription.tracker %></td>
+      <td>
+        <span class="badge <%= subscription.status %>">
+          <%= t("activerecord.models.subscription.statuses.#{subscription.status}") %>
+        </span>
+      </td>
+      <td style="text-align: right;"><%= subscription.hours_with_extra %></td>
+      <td style="text-align: right;"><%= subscription.spent %></td>
+      <td style="text-align: right;"><%= number_to_currency(subscription.rate, unit: Setting.plugin_ttm['ttm_currency'], separator: '.', delimiter: ',') %></td>
+      <td>
+        <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, project_subscription_path(subscription.project, subscription), title: t('button_show') %>
+        <%= link_to '<i class="fa fa-pencil-square mr-5" aria-hidden="true"></i>'.html_safe, edit_project_subscription_path(subscription.project, subscription), title: t('button_edit') if User.current.allowed_to?(:edit_subscriptions, subscription.project) %>
+        <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, project_subscription_path(subscription.project, subscription), method: :delete, data: {confirm: t('notice.subscriptions.delete.confirm')}, title: t('button_delete') if User.current.allowed_to?(:edit_subscriptions, subscription.project) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<span class='pagination'>
+  <%= pagination_links_full @subscription_pages, @subscription_count %>
+</span>
+
+<% content_for :sidebar do %>
+  <h3><%= t('label_filter') %></h3>
+  <div class="box">
+    <p><strong><%= t('label_total') %>:</strong> <%= @subscription_count %></p>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  // Client-side filtering for all columns (case-insensitive)
+  function applyFilters() {
+    var filters = {
+      'filter-project': { selector: 'td:nth-child(1)', value: '' },
+      'filter-id': { selector: 'td:nth-child(2)', value: '' },
+      'filter-name': { selector: 'td:nth-child(3)', value: '' },
+      'filter-activity': { selector: 'td:nth-child(4)', value: '' },
+      'filter-tracker': { selector: 'td:nth-child(5)', value: '' },
+      'filter-status': { selector: 'td:nth-child(6)', value: '' }
+    };
+
+    // Get all filter values
+    Object.keys(filters).forEach(function(filterId) {
+      var elem = document.getElementById(filterId);
+      if (elem) {
+        filters[filterId].value = elem.value.toLowerCase().trim();
+      }
+    });
+
+    var rows = document.querySelectorAll('table.list tbody tr');
+    rows.forEach(function(row) {
+      var matches = true;
+
+      // Check each filter
+      Object.keys(filters).forEach(function(filterId) {
+        var filter = filters[filterId];
+        if (filter.value) {
+          var cell = row.querySelector(filter.selector);
+          var text = cell ? cell.innerText.toLowerCase().trim() : '';
+          if (!text.includes(filter.value)) {
+            matches = false;
+          }
+        }
+      });
+
+      row.style.display = matches ? '' : 'none';
+    });
+  }
+
+  // Add event listeners to all filter fields
+  ['filter-project', 'filter-id', 'filter-name', 'filter-activity', 'filter-tracker', 'filter-status'].forEach(function(filterId) {
+    var elem = document.getElementById(filterId);
+    if (elem) {
+      elem.addEventListener('input', applyFilters);
+    }
+  });
+</script>

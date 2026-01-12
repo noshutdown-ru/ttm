@@ -1,6 +1,4 @@
 class ExtraTimesController < ApplicationController
-  unloadable
-
   before_action :find_subscription_and_project
 
   before_action :authorize
@@ -36,8 +34,8 @@ class ExtraTimesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @extra_time.update_attributes(params[:ttm_extra_time])
-         format.html { redirect_to project_extra_times_path(@project), notice: t('notice.extra_time.update. success') }
+      if @extra_time.update(extra_time_params)
+         format.html { redirect_to project_extra_times_path(@project), notice: t('notice.extra_time.update.success') }
        else
          format.html { render action: 'edit'}
        end
