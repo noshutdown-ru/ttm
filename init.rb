@@ -7,7 +7,7 @@ Redmine::Plugin.register :ttm do
   author 'noshutdown.ru'
   description 'Plugin for managing working time'
   version '1.0.0'
-  url 'https://noshutdown.ru/redmine-plugins-ttm/'
+  url 'https://github.com/noshutdown-ru/ttm'
   author_url 'https://noshutdown.ru/'
 
   permission :view_all_subscriptions, subscriptions: [ :all ]
