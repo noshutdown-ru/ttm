@@ -1,4 +1,6 @@
 # Changelog
+## 1.0.1
+- Fixed view issue for subscriptions list.
 
 ## 1.0.0
 - Enabled support of Redmine 5.x/6.x.
