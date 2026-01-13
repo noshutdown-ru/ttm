@@ -51,8 +51,8 @@
       <td><%= subscription.project.name %></td>
       <td><strong><%= link_to subscription.id, project_subscription_path(subscription.project, subscription) %></strong></td>
       <td><%= link_to subscription.name, project_subscription_path(subscription.project, subscription) %></td>
-      <td><%= subscription.activity %></td>
-      <td><%= subscription.tracker %></td>
+      <td><%= subscription.activity&.name || '-' %></td>
+      <td><%= subscription.tracker&.name || '-' %></td>
       <td>
         <span class="badge <%= subscription.status %>">
           <%= t("activerecord.models.subscription.statuses.#{subscription.status}") %>

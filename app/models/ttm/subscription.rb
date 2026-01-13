@@ -4,8 +4,8 @@ module TTM
     has_many :extra_times, class_name: 'TTM::ExtraTime'
     belongs_to :project
     belongs_to :user
-    belongs_to :activity, :class_name => 'TimeEntryActivity'
-    belongs_to :tracker
+    belongs_to :activity, :class_name => 'TimeEntryActivity', optional: true
+    belongs_to :tracker, optional: true
 
     validates_numericality_of :rate, allow_nil: false
     validates_numericality_of :hours, allow_nil: false

@@ -17,9 +17,9 @@
       <table class="attributes">
         <tr>
           <td class="label"><strong><%= t('field_activity') %></strong></td>
-          <td class="value"><%= @subscription.activity %></td>
+          <td class="value"><%= @subscription.activity&.name || '-' %></td>
           <td class="label"><strong><%= t('field_tracker') %></strong></td>
-          <td class="value"><%= @subscription.tracker %></td>
+          <td class="value"><%= @subscription.tracker&.name || '-' %></td>
         </tr>
         <tr>
           <td class="label"><strong><%= t('activerecord.models.subscription.begindate') %></strong></td>

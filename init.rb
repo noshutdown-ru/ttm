@@ -5,8 +5,8 @@ require_relative 'lib/ttm/ttm_hook_listener'
 Redmine::Plugin.register :ttm do
   name 'Time To Money'
   author 'noshutdown.ru'
-  description 'Plugin for managing working time'
-  version '1.0.0'
+  description 'Plugin for managing working time over subscriptions'
+  version '1.0.1'
   url 'https://github.com/noshutdown-ru/ttm'
   author_url 'https://noshutdown.ru/'
 
@@ -29,5 +29,4 @@ Redmine::Plugin.register :ttm do
                'ttm_notify_period' => '7'
            },
            :partial => 'settings/ttm_settings'
-
 end
